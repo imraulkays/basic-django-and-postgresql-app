@@ -8,7 +8,7 @@ RUN mkdir -p $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 COPY /requirements.txt /requirements.txt
 # make available run pip install psycopg2
-RUN apk update && apk add --virtual build-deps gcc python3-dev musl-dev && apk add postgresql-dev && apk add --no-cache jpeg-dev zlib-dev
+RUN apk update && apk add --virtual build-deps gcc python3-dev musl-dev && apk add postgresql-dev && apk add --no-cache jpeg-dev zlib-dev build-base
 RUN pip3 install -r /requirements.txt
 # add bash into alpine linux
 RUN apk add --update bash && rm -rf /var/cache/apk/*
